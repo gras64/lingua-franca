@@ -199,3 +199,23 @@ testExtract("on the evening of june 5th 2017 remind me to call my mother",
             "2017-06-05 19:00:00", "remind me to call my mother")
 
 ```
+check other languages
+
+If you wish to develop a corpus in a language other than English, then Mimic Recording Studio can be used to produce voice recordings for TTS voices in additional languages. If you are building a corpus in a language other than English, we encourage you to choose phrases which:
+
+    occur in natural, everyday speech in the target language
+    have a variety of string lengths
+    cover a wide variety of phonemes (basic sounds)
+
+there is a file generator that generates any sentences from wikipedia. just call the command.
+
+    'python3 backend/corpus_file_gen.py' to run. you are always asked about the wiki language 'en'.
+
+if you have only a simple text file without line length and tab you can only check the file.
+
+    python3 backend/corpus_file_gen.py --prepare_file 3 --file english_corpus.csv if you have already started a file, the generator will expand the file 35K.
+    python3 backend/corpus_file_gen.py --prepare_file 1 --file english_corpus.csv or --help for help.
+
+This is a very simple generator. You should always check the file and delite false records. We are working on a solution to change numbers into words
+
+IMPORTANT: For now, you must reset the sqlite database to use a new corpus. If you've recorded on another corpus and would like to save that data, you can simply rename your sqlite db found in backend/db/ to another name. The backend will detect that mimicstudio.db is not there and create a new one for you. You may continue recording data for your new corpus.
